@@ -1,5 +1,10 @@
-import 'transaction.dart';
+import './widgets/user_transaction.dart';
+
+import './widgets/new_transaction.dart';
+
+import './widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -15,45 +20,33 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: 't1',
-      title: 'new shoes',
-      amount: 69.08,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'new clothes',
-      amount: 169.08,
-      date: DateTime.now(),
-    ),
-  ];
+  
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('expense application'),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              child: Text('chart!'),
-              elevation: 5,
-            ),
+      body:  SingleChildScrollView(
+        child: Column(
+            //mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  color: Colors.blue,
+                  child: Text('chart!'),
+                  elevation: 5,
+                ),
+              ),
+              UserTransaction(),
+            ],
           ),
-          Column(
-            children: transactions.map((tx) {
-              return Card(
-                child: Text(tx.title),
-              );
-            }).toList(),
-          ),
-        ],
       ),
-    );
+      );
   }
 }
