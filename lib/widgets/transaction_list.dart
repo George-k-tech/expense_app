@@ -9,10 +9,8 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.transactions, this.deleteTx);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      child: transactions.isEmpty
-          ? Column(
+    return  transactions.isEmpty
+          ?  Column(
               children: <Widget>[
                 Text(
                   'No Transactions added yet!',
@@ -65,7 +63,6 @@ class TransactionList extends StatelessWidget {
                 );
               },
               itemCount: transactions.length,
-            ),
-    );
+            );
   }
 }
